@@ -21,8 +21,14 @@ class RR(object):
         else:
             sum_of_rates = 0
             for r in self.rates:
-                sum_of_rates += 60/r.seconds
+                sum_of_rates += 60/r.total_seconds()
             rr = sum_of_rates / len(self.rates)
 
         comment = "Too fast" if rr > 30 else "Normal"
-        return "Average RR: {} ({})".format(rr, comment)
+
+        if rr == 0:
+            return "Average RR: --"
+        else:
+            return "Average RR: {:2.2f} ({})".format(rr, comment)
+
+
