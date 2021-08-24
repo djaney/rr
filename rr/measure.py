@@ -17,7 +17,7 @@ class RR(object):
     def __str__(self):
 
         if len(self.rates) == 0:
-            rr = "--"
+            rr = 0
         else:
             sum_of_rates = 0
             for r in self.rates:
